@@ -9,6 +9,19 @@ eval "$(parse-options help:h -- "$@")"
 if [[ $help ]]
 then
 	cat '/usr/share/bash-common-environment/help/environment'
-else
-	echo 'Hello World!'
+	exit
 fi
+
+cat <<'EOF'
+BIN=$(realpath "${BASH_SOURCE[0]}")
+if [[ $(dirname "$BIN") = '/usr/bin' ]]
+then
+	PACKAGE=$(pacman -Qoq "$BIN")
+	LIB="/usr/lib/${PACKAGE}"
+	HELP="/usr/share/${PACKAGE}/help/${BIN}"
+else
+	ROOT=$(dirname "$(realpath "$(dirname "$BIN")")")
+	LIB="${ROOT}/lib"
+	HELP="${ROOT}/help/$(basename "$BIN")"
+fi
+EOF
