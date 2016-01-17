@@ -15,6 +15,10 @@ setup() {
 	chmod +x "${BATS_TEST_DIRNAME}/package/bin/script"
 }
 
+teardown() {
+  rm -rf "${BATS_TEST_DIRNAME}/package"
+}
+
 @test 'sets some environment variables' {
 	run "${BATS_TEST_DIRNAME}/package/bin/script"
 	echo "$output"
