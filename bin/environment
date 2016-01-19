@@ -18,7 +18,7 @@ if [[ $(dirname "$BIN") = '/usr/bin' ]]
 then
 	PACKAGE=$(pacman -Qoq "$BIN")
 	LIB="/usr/lib/${PACKAGE}"
-	HELP="/usr/share/${PACKAGE}/help/${BIN}"
+	HELP="/usr/share/${PACKAGE}/help/$(basename "$BIN")"
 else
 	ROOT=$(dirname "$(realpath "$(dirname "$BIN")")")
 	LIB="${ROOT}/lib"
