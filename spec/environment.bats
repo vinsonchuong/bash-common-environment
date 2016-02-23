@@ -21,9 +21,8 @@ teardown() {
 
 @test 'sets some environment variables' {
 	run "${BATS_TEST_DIRNAME}/package/bin/script"
-	echo "$output"
 	[[ $status = 0 ]]
-	[[ $output = *"BIN: ${BATS_TEST_DIRNAME}/package/bin/script"* ]]
-	[[ $output = *"LIB: ${BATS_TEST_DIRNAME}/package/lib"* ]]
-	[[ $output = *"HELP: ${BATS_TEST_DIRNAME}/package/help/script"* ]]
+	[[ $output = *"BIN: script"* ]]
+	[[ $output = *"LIB: ../lib"* ]]
+	[[ $output = *"HELP: ../help/script"* ]]
 }

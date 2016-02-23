@@ -13,15 +13,15 @@ then
 fi
 
 cat <<'EOF'
-BIN=$(realpath "${BASH_SOURCE[0]}")
+BIN=$(basename "${BASH_SOURCE[0]}")
 if [[ $(dirname "$BIN") = '/usr/bin' ]]
 then
-	PACKAGE=$(pacman -Qoq "$BIN")
+	PACKAGE=$(pacman -Qoq "./$BIN")
 	LIB="/usr/lib/${PACKAGE}"
-	HELP="/usr/share/${PACKAGE}/help/$(basename "$BIN")"
+	HELP="/usr/share/${PACKAGE}/help/${BIN}"
 else
-	ROOT=$(dirname "$(realpath "$(dirname "$BIN")")")
+	ROOT=".."
 	LIB="${ROOT}/lib"
-	HELP="${ROOT}/help/$(basename "$BIN")"
+	HELP="${ROOT}/help/${BIN}"
 fi
 EOF
