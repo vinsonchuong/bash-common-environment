@@ -20,7 +20,7 @@ then
 	LIB="/usr/lib/${PACKAGE}"
 	HELP="/usr/share/${PACKAGE}/help/${BIN}"
 else
-	ROOT=".."
+	ROOT="$(dirname "${BASH_SOURCE[0]}")/.."
 	LIB="${ROOT}/lib"
 	HELP="${ROOT}/help/${BIN}"
 fi

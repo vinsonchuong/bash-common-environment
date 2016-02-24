@@ -23,6 +23,6 @@ teardown() {
 	run "${BATS_TEST_DIRNAME}/package/bin/script"
 	[[ $status = 0 ]]
 	[[ $output = *"BIN: script"* ]]
-	[[ $output = *"LIB: ../lib"* ]]
-	[[ $output = *"HELP: ../help/script"* ]]
+	[[ $output = *"LIB: ${BATS_TEST_DIRNAME}/package/bin/../lib"* ]]
+	[[ $output = *"HELP: ${BATS_TEST_DIRNAME}/package/bin/../help/script"* ]]
 }
